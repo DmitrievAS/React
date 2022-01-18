@@ -1,5 +1,5 @@
-const Message = () => {
-    return <div>My second React App. Hello, World!</div>
+const Message = (props) => {
+    return <div>My second React App - {props.text} </div>
 
 }
 
