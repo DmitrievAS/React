@@ -11,7 +11,7 @@
 
 .dashboard {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   width: 500px;
   min-height: 500px;
   margin: auto;
@@ -29,15 +29,15 @@
   width: auto;
   background-color: #9DB82E;
   padding: 5px;
-  border-radius: 7px
-}
+  border-radius: 7px;
 
-.styleMessages.me {
-  text-align: right;
-}
+  &.me {
+    text-align: right;
+  };
 
-.styleMessages.bot {
-  text-align: left;
+  &.bot {
+    text-align: left;
+  }
 }
 
 .controlPanel {
