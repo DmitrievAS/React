@@ -1,24 +1,58 @@
 import './App.css';
-import Message from "./Message.js";
+import React, {useState, useEffect} from 'react';
 
-function App(props) {
+function App() {
+    const [messageList, setMessagesList] = useState([]);
+    const [value, setValue] = useState("");
 
-    const topPosition = '40px';
+    const handleChange = (event) => {
+        const valueFromInput = event.target.value;
+        setValue(valueFromInput);
+    }
+
+
+    const handleSend = () => {
+        setMessagesList([...messageList, {text: value, author: 'me'}]);
+        setValue('');
+    }
+    useEffect(() => {
+        let timer;
+        if (messageList.length > 0 && messageList[messageList.length - 1].author === 'me') {
+            timer = setInterval(() => {
+                setMessagesList([...messageList, {
+                    text: 'сообщение бота',
+                    author: 'bot'
+                }]);
+            }, 1500);
+        }
+
+        return () => {
+            clearTimeout(timer);
+        }
+    }, [messageList])
+
+    const styleAuthor = {
+        fontSize: 10,
+        color: 'white'
+    }
+
 
     return (
-        <div className="App">
-            <header
-                className={`App-header ${props.showRed ? 'header-red' : 'header-blue' }`}
-                    style={{top: topPosition || '10px'}}>
-                My first React App
-                <h3>Hello, {props.name}!</h3>
-                <div style={{paddingTop: '25px', backgroundColor: 'red'}}>
-                    <Message text = {'Задание по первому уроку выполнено!'}></Message>
-                </div>
-            </header>
+        <div className='App'>
+
+            <div className='dashboard'>
+                {messageList.map((message) => (
+                    <div className={`styleMessages ${message.author === 'me' ? 'me' : 'bot'}`}>
+                        {message.text} <sup style={styleAuthor}>{message.author} </sup>
+                    </div>
+                ))}
+            </div>
+            <div className='controlPanel'>
+                <input value={value} onChange={handleChange}/>
+                <button onClick={handleSend}>Отправить</button>
+            </div>
         </div>
     );
 }
-
 
 export default App;
