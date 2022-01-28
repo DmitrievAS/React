@@ -43,7 +43,7 @@ function App() {
 
             <div className='dashboard'>
                 {messageList.map((message) => (
-                    <div key={index} className={`styleMessages ${message.author === 'me' ? 'me' : 'bot'}`}>
+                    <div className={`styleMessages ${message.author === 'me' ? 'me' : 'bot'}`}>
                         {message.text} <sup style={styleAuthor}>{message.author} </sup>
                     </div>
                 ))}
