@@ -1,14 +1,15 @@
 import './App.css';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
+import {TextField, Fab} from "@material-ui/core";
 
 function App() {
     const [messageList, setMessagesList] = useState([]);
     const [value, setValue] = useState("");
 
-    const handleChange = (event) => {
+    const handleChange = useCallback((event) => {
         const valueFromInput = event.target.value;
         setValue(valueFromInput);
-    }
+    },[])
 
 
     const handleSend = () => {
@@ -42,14 +43,23 @@ function App() {
 
             <div className='dashboard'>
                 {messageList.map((message) => (
-                    <div className={`styleMessages ${message.author === 'me' ? 'me' : 'bot'}`}>
+                    <div key={index} className={`styleMessages ${message.author === 'me' ? 'me' : 'bot'}`}>
                         {message.text} <sup style={styleAuthor}>{message.author} </sup>
                     </div>
                 ))}
             </div>
-            <div className='controlPanel'>
-                <input value={value} onChange={handleChange}/>
-                <button onClick={handleSend}>Отправить</button>
+            <div className='controlPanel' style={{margin: "10px 20px"}}>
+                <TextField
+                    style={{margin: '0 20px'}}
+                    id="outlined-basic"
+                    label="Пиши здесь"
+                    variant="outlined"
+                    value={value}
+                    onChange={handleChange}
+                    autoFocus={true}
+                />
+                <Fab color="primary" aria-label="edit" onClick={handleSend}>Send</Fab>
+
             </div>
         </div>
     );
