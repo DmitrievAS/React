@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {ThemeProvider, useTheme, createTheme, MuiThemeProvider} from "@material-ui/core/styles";
+import {createTheme, MuiThemeProvider} from "@material-ui/core/styles";
 import {createStyles, makeStyles} from '@material-ui/core';
 
 const useGlobalStyles = makeStyles(() =>
@@ -30,7 +30,7 @@ const myName = 'Sasha';
 const theme = createTheme({
     palette: {
         primary: {
-            main: "#008cff",
+            main: '#008CFFFF',
         },
         secondary: {
             main: "#0098FF",
@@ -45,7 +45,7 @@ const GlobalStyles = () => {
 
 ReactDOM.render(
     <MuiThemeProvider theme={theme}>
-        <GlobalStyles />
+        <GlobalStyles/>
         <App name={myName}/>
     </MuiThemeProvider>,
     document.getElementById('root')
