@@ -1,13 +1,11 @@
 import ChatList from "../components/ChatList";
-import {useParams} from "react-router-dom";
 
-const NoChats = (chats) => {
-    const {chatId} = useParams();
-
+const NoChats = ({ chats }) => {
     return (
         <div>
             Chats not found
-                    </div>
+            <ChatList chats={chats} />
+        </div>
 
     );
 };

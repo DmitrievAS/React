@@ -81,7 +81,7 @@ const Routers = () => {
                     />
                     }/>
                     <Route path="/Profile" element={<Profile/>}/>
-                    <Route path="*" element={<NoChats chats={ChatList}/>}/>
+                    <Route path="*" element={<NoChats chats={chats}/>}/>
                 </Routes>
             </div>
 
