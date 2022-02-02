@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import {createTheme, MuiThemeProvider} from "@material-ui/core/styles";
 import {createStyles, makeStyles} from '@material-ui/core';
+import Routers from "./pages/Routers";
+import {BrowserRouter} from "react-router-dom";
 
 const useGlobalStyles = makeStyles(() =>
     createStyles({
@@ -25,8 +26,6 @@ const useGlobalStyles = makeStyles(() =>
     })
 );
 
-const myName = 'Sasha';
-
 const theme = createTheme({
     palette: {
         primary: {
@@ -46,7 +45,10 @@ const GlobalStyles = () => {
 ReactDOM.render(
     <MuiThemeProvider theme={theme}>
         <GlobalStyles/>
-        <App name={myName}/>
+        <BrowserRouter>
+            <Routers/>
+        </BrowserRouter>
+
     </MuiThemeProvider>,
     document.getElementById('root')
 );

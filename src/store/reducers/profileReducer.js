@@ -1,4 +1,5 @@
-import exampleAction
+//TODO доделать из урока про Redux
+
 
 const initialState = {
     showName: true,

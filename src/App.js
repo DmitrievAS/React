@@ -1,7 +1,7 @@
 import './App.css';
 import React, {useState, useEffect, useCallback, useRef} from 'react';
 import {TextField, Fab} from "@material-ui/core";
-import MessageList from "./MessageList";
+import MessageList from "./components/MessageList";
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';

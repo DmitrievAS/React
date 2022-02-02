@@ -94,4 +94,21 @@
   color: aliceblue;
   font-weight: bold;
 }
+.chatList {
+  color: aliceblue;
+  width: 200px;
+  display: block;
+}
+.chatList a {
+  display: block;
+  padding: 20px;
+  border-bottom: 1px solid aliceblue;
+}
+.chatList a:last-child {
+  border-bottom: none;
+}
+.chats {
+  display: flex;
+  align-items: flex-start;
+}
 /*# sourceMappingURL=App.css.map */
