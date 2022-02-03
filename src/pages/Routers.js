@@ -5,7 +5,7 @@ import Home from "./Home";
 import Chats from "./Chats";
 import Profile from "./Profile";
 import NoChats from "./NoChats";
-import ChatList from "../components/ChatList";
+import MessageList from "../components/MessageList";
 
 const initialChats = {
     id1: {
@@ -21,51 +21,53 @@ const initialChats = {
 
 
 const chatListInitial = [
-    {id: 'id1', name: 'Chat 1'},
-    {id: 'id2', name: 'Chat 2'}
+    {id: 'id1', name: 'Петр'},
+    {id: 'id2', name: 'Иван'},
+    {id: 'id3', name: 'Василий'}
 ];
 
 const messagesInitial = {
     id1: [{text: 'Hello', author: 'me'}],
-    id2: [{text: 'Ciao', author: 'me'}]
+    id2: [{text: 'Ciao', author: 'me'}],
+    id3: [
+        {text: 'Buongiorno', author: 'me'},
+        {text: 'Buonasera', author: 'me'}
+    ],
 };
 
 const Routers = () => {
-//TODO: поменять initialChats на chatListInitial
     const [chats, setChats] = useState(chatListInitial);
     const [messages, setMessages] = useState(messagesInitial)
 
-    const handleDelChat = (id) => {
-        const newChats = chats.filter(chat => chat.id !== id);
-        setChats(newChats);
-        const newMsg = {...messages};
-        delete newMsg[id];
-        setMessages(newMsg);
-    };
-    const handleAddChat = () => {
-        const chatLen = chats.length
-        setChats([...chats, {id: `id${chatLen}`, name: `Chat ${chatLen}`}]);
-        setMessages({...messages, ...{[`id${chatLen}`]: []}})
-    };
-
+    // const handleDelChat = (id) => {
+    //     const newChats = chats.filter(chat => chat.id !== id);
+    //     setChats(newChats);
+    //     const newMsg = {...messages};
+    //     delete newMsg[id];
+    //     setMessages(newMsg);
+    // };
+    // const handleAddChat = () => {
+    //     const chatLen = chats.length
+    //     setChats([...chats, {id: `id${chatLen}`, name: `Chat ${chatLen}`}]);
+    //     setMessages({...messages, ...{[`id${chatLen}`]: []}})
+    // };
 
     return (
-
         <div className='chatsList'>
-            <Box sx={{ display: 'flex' }}>
-                <Paper elevation={0} sx={{ minWidth: 256, display: 'flex' }}>
+            <Box sx={{display: 'flex', width: 300, color: 'D636C9'}}>
+                <Paper className='box' elevation={0} sx={{display: 'flex', color: 'D636C9'}}>
                     <ListItem component='div' disablePadding>
-                        <ListItemButton sx={{ height: 56 }}>
+                        <ListItemButton sx={{height: 56, color: 'D636C9'}}>
                             <Link to='/'>Home</Link>
                         </ListItemButton>
                     </ListItem>
                     <ListItem component='div' disablePadding>
-                        <ListItemButton sx={{ height: 56 }}>
+                        <ListItemButton sx={{height: 56}}>
                             <Link to='/chats'>Chats</Link>
                         </ListItemButton>
                     </ListItem>
                     <ListItem component='div' disablePadding>
-                        <ListItemButton sx={{ height: 56 }}>
+                        <ListItemButton sx={{height: 56}}>
                             <Link to='/profile'>Profile</Link>
                         </ListItemButton>
                     </ListItem>
@@ -73,18 +75,18 @@ const Routers = () => {
             </Box>
             <div className={'messenger'}>
                 <Routes>
-                    <Route path="/" element={<Home/>}/>
-                    <Route path="/chats:chatId" element={<Chats
+                    <Route path="/" exact element={<Home/>}/>
+                    <Route path="/chats/:chatId" element={<Chats
                         chats={chats}
-                        handleAddChat={handleAddChat}
-                        handleDelChat={handleDelChat}
+                        // handleAddChat={handleAddChat}
+                        // handleDelChat={handleDelChat}
+                        // isChat
                     />
                     }/>
                     <Route path="/Profile" element={<Profile/>}/>
                     <Route path="*" element={<NoChats chats={chats}/>}/>
                 </Routes>
             </div>
-
 
         </div>
     )

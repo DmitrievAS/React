@@ -79,12 +79,17 @@
 .chatsList {
   display: flex;
   flex-direction: column;
-  width: 100px;
-  min-height: 500px;
+  width: 150px;
+  height: 300px;
   margin: auto;
-  background-color: #D636C9;
+  background-color: #04f4fd;
   border-radius: 10px;
   padding: 25px;
+}
+.box {
+  width: 150px;
+  background-color: #D636C9;
+  display: flex;
 }
 .chatName {
   background-color: #D636C9;

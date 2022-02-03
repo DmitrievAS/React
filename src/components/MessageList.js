@@ -3,28 +3,23 @@ import PropTypes from "prop-types";
 import '../App.css';
 import {Avatar, ListItemAvatar, ListItem, List, Box, ListItemText} from "@mui/material";
 
+const MessageList = (messages) => {
+    console.log({messages})
 
-const MessageList = ({messageList}) => {
     return (
-        <Box
-            sx={{
-                width: 300,
-                height: 600,
-                border: '1px solid #ссс',
-                overflow: "auto"
-            }}>
+        <Box sx={{ width: 600, height: 600, border: '1px solid #ссс', overflow: "auto" }}>
             <List sx={{mb: 2}}>
-                {messageList.map((message, i) => (
+                {messages?.map((message, i) => (
                     <ListItem
                         button
                         key={i}
                     >
                         <ListItemAvatar>
-                            <Avatar sx={{bgcolor: message.author === 'Bot' ? 'green' : "blue"}}>
-                                {message.author === "bot" ? <Adb/> : <Face/>}
+                            <Avatar sx={{bgcolor: messages.author === 'Bot' ? 'green' : "blue"}}>
+                                {messages.author === "bot" ? <Adb/> : <Face/>}
                             </Avatar>
                         </ListItemAvatar>
-                        <ListItemText primary={message.text} secondary={message.author}/>
+                        <ListItemText primary={messages.text} secondary={messages.author}/>
                     </ListItem>
                 ))};
             </List>
@@ -32,11 +27,6 @@ const MessageList = ({messageList}) => {
     );
 };
 
-
-// const styleAuthor = {
-//     fontSize: 10,
-//     color: 'white'
-// }
 
 // const [messageList, setMessagesList] = useState([]);
 
