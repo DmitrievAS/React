@@ -3,7 +3,7 @@ import MessageList from '../components/MessageList';
 import ChatList from '../components/ChatList';
 import NoChats from "./NoChats";
 
-const Chats = ({chats, handleAddChat, handleDelChat}) => {
+const Chats = ({chats, messages, handleAddChat, handleDelChat}) => {
     let {chatId} = useParams();
 
     return chats[chatId] ? (
@@ -15,7 +15,7 @@ const Chats = ({chats, handleAddChat, handleDelChat}) => {
                 handleDelChat={handleDelChat}
                 isChat
             />
-            <MessageList messageList={chats[chatId].messages}/>
+            <MessageList messageList={messages}/>
         </div>
     ) : <NoChats/>;
 }
