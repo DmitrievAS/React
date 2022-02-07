@@ -1,5 +1,5 @@
 const EXAMPLE_ACTION = 'EXAMPLE_ACTION';
 
-export const exampleAction = {
+export const toggleShowName = {
     type: EXAMPLE_ACTION
 }

@@ -11,7 +11,7 @@ import Divider from '@mui/material/Divider';
 
 function App() {
     const [messageList, setMessagesList] = useState([]);
-    // const [Chats, setChats] = useState([{numid: 1, name: 'Chat 1'},
+    // const [chats, setChats] = useState([{numid: 1, name: 'Chat 1'},
     //     {numid: 2, name: 'Chat 2'},
     //     {numid: 3, name: 'Chat 2'}]);
 
@@ -53,7 +53,7 @@ function App() {
             <div className='chatsList'>
                 <Box sx={{width: '100%', maxWidth: 360}}>
                     <nav aria-label="ListFolders" className="ListFolders"> Чаты:
-                        <List className='chatName'>
+                        <List className='chatsList'>
 
                             <ListItemButton component="a" href="#simple-list">
                                 <ListItemText primary="ЧАТ №1"/>

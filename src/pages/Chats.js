@@ -6,8 +6,8 @@ import NoChats from "./NoChats";
 const Chats = ({chats, messages, handleAddChat, handleDelChat}) => {
     let {chatId} = useParams();
 
-    return chats[chatId] ? (
-        <div className={'chats'}>
+    return chats ? (
+        <div className={'chatsList'}>
             <ChatList
                 chats={chats}
                 chatId={chatId}
@@ -15,7 +15,7 @@ const Chats = ({chats, messages, handleAddChat, handleDelChat}) => {
                 handleDelChat={handleDelChat}
                 isChat
             />
-            <MessageList messageList={messages}/>
+            <MessageList messages={messages} chatId={chatId}/>
         </div>
     ) : <NoChats/>;
 }

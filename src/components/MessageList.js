@@ -3,23 +3,45 @@ import PropTypes from "prop-types";
 import '../App.css';
 import {Avatar, ListItemAvatar, ListItem, List, Box, ListItemText} from "@mui/material";
 
-const MessageList = (messages) => {
-    console.log({messages})
+
+const MessageList = (messages, chatId) => {
+    (Object.values(messages).map((el) => console.log(el)));
+
 
     return (
-        <Box sx={{ width: 600, height: 600, border: '1px solid #ссс', overflow: "auto" }}>
+        <Box sx={{width: 600, height: 600, border: '1px solid #ссс', overflow: "auto"}}>
             <List sx={{mb: 2}}>
-                {messages?.map((message, i) => (
+                {messages[chatId]?.map((message, index) => <ListItem
+                    button
+                    key={index}
+                >
+                    <ListItemAvatar>
+                        <Avatar sx={{bgcolor: message.author === 'bot' ? 'green' : "blue"}}>
+                            {message.author === "bot" ? <Adb/> : <Face/>}
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={message.text} secondary={message.author}/>
+                </ListItem>)};
+            </List>
+        </Box>
+    )
+}
+
+const MessageList2 = ({messages, chatId}) => {
+    return (
+        <Box sx={{width: 600, height: 600, border: '1px solid #ссс', overflow: "auto"}}>
+            <List sx={{mb: 2}}>
+                {messages[chatId]?.map((message, i) => (
                     <ListItem
                         button
                         key={i}
                     >
                         <ListItemAvatar>
-                            <Avatar sx={{bgcolor: messages.author === 'Bot' ? 'green' : "blue"}}>
-                                {messages.author === "bot" ? <Adb/> : <Face/>}
+                            <Avatar sx={{bgcolor: message.author === 'Bot' ? 'green' : "blue"}}>
+                                {message.author === "bot" ? <Adb/> : <Face/>}
                             </Avatar>
                         </ListItemAvatar>
-                        <ListItemText primary={messages.text} secondary={messages.author}/>
+                        <ListItemText primary={message.text} secondary={message.author}/>
                     </ListItem>
                 ))};
             </List>
@@ -71,3 +93,6 @@ MessageList.propTypes = {
 }
 
 export default MessageList
+
+
+//TODO есть в уроке 7.

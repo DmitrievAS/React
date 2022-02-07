@@ -53,9 +53,9 @@ const Routers = () => {
     // };
 
     return (
-        <div className='chatsList'>
+        <div className='chatList'>
             <Box sx={{display: 'flex', width: 300, color: 'D636C9'}}>
-                <Paper className='box' elevation={0} sx={{display: 'flex', color: 'D636C9'}}>
+                <Paper className='ListFolders' elevation={0} sx={{display: 'flex', color: 'ccc'}}>
                     <ListItem component='div' disablePadding>
                         <ListItemButton sx={{height: 56, color: 'D636C9'}}>
                             <Link to='/'>Home</Link>

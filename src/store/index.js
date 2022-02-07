@@ -1,4 +1,7 @@
-import profileReducer from "src/store/reducers/profileReducer";
+import { createStore } from 'redux'
+import profileReducer from "../store/profile/profileReducer";
 
-const store = createStore(profileReducer);
+export const store = createStore(profileReducer);
+
+
 

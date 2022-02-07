@@ -89,7 +89,8 @@
 .box {
   width: 150px;
   background-color: #D636C9;
-  display: flex;
+  display: block;
+  right: auto;
 }
 .chatName {
   background-color: #D636C9;
@@ -101,12 +102,14 @@
 }
 .chatList {
   color: aliceblue;
-  width: 200px;
+  width: 100px;
   display: block;
+  font-weight: bold;
 }
 .chatList a {
-  display: block;
-  padding: 20px;
+  display: flex;
+  padding: 5px;
+  margin-left: 20px;
   border-bottom: 1px solid aliceblue;
 }
 .chatList a:last-child {
@@ -115,5 +118,8 @@
 .chats {
   display: flex;
   align-items: flex-start;
+}
+.userProfile {
+  color: black;
 }
 /*# sourceMappingURL=App.css.map */

@@ -1,5 +1,5 @@
 import  {ADD_CHAT} from "./actions";
-import {exampleAction} from "../actions/chatActions";
+import {exampleAction} from "../profile/chat";
 
 // const initialState = {
 //     chatList = []
