@@ -2,9 +2,11 @@ import {useParams} from "react-router-dom";
 import MessageList from '../components/MessageList';
 import ChatList from '../components/ChatList';
 import NoChats from "./NoChats";
+import {useState} from "react";
 
 const Chats = ({chats, messages, handleAddChat, handleDelChat}) => {
     let {chatId} = useParams();
+    console.log({messages})
 
     return chats ? (
         <div className={'chatsList'}>
@@ -15,7 +17,7 @@ const Chats = ({chats, messages, handleAddChat, handleDelChat}) => {
                 handleDelChat={handleDelChat}
                 isChat
             />
-            <MessageList messages={messages} chatId={chatId}/>
+            <MessageList messages={messages}/>
         </div>
     ) : <NoChats/>;
 }

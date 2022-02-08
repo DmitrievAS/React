@@ -1,13 +1,11 @@
 import PropTypes from "prop-types";
 
-
 const Button = (props) => {
     return (
         <div>
-            <button onClick={props.onClick}>Increase count dude!</button>
+            <button onClick={props.onClick}>Add chat</button>
         </div>
     )
-
 }
 
 Button.propTypes = {

@@ -7,17 +7,17 @@ import Profile from "./Profile";
 import NoChats from "./NoChats";
 import MessageList from "../components/MessageList";
 
-const initialChats = {
-    id1: {
-        name: "Chat 1",
-        messages: [{text: "FirstMessage", author: 'bot'}],
-    },
-    id2: {
-        name: "Chat 2",
-        messages: [{text: "FirstMessageHereToo!", author: 'me'},
-            {text: "SecondMessageHereToo!", author: 'me'}],
-    },
-};
+// const initialChats = {
+//     id1: {
+//         name: "Chat 1",
+//         messages: [{text: "FirstMessage", author: 'bot'}],
+//     },
+//     id2: {
+//         name: "Chat 2",
+//         messages: [{text: "FirstMessageHereToo!", author: 'me'},
+//             {text: "SecondMessageHereToo!", author: 'me'}],
+//     },
+// };
 
 
 const chatListInitial = [
@@ -39,18 +39,18 @@ const Routers = () => {
     const [chats, setChats] = useState(chatListInitial);
     const [messages, setMessages] = useState(messagesInitial)
 
-    // const handleDelChat = (id) => {
-    //     const newChats = chats.filter(chat => chat.id !== id);
-    //     setChats(newChats);
-    //     const newMsg = {...messages};
-    //     delete newMsg[id];
-    //     setMessages(newMsg);
-    // };
-    // const handleAddChat = () => {
-    //     const chatLen = chats.length
-    //     setChats([...chats, {id: `id${chatLen}`, name: `Chat ${chatLen}`}]);
-    //     setMessages({...messages, ...{[`id${chatLen}`]: []}})
-    // };
+    const handleDelChat = (id) => {
+        const newChats = chats.filter(chat => chat.id !== id);
+        setChats(newChats);
+        const newMsg = {...messages};
+        delete newMsg[id];
+        setMessages(newMsg);
+    };
+    const handleAddChat = () => {
+        const chatLen = chats.length
+        setChats([...chats, {id: `id${chatLen}`, name: `Chat ${chatLen}`}]);
+        setMessages({...messages, ...{[`id${chatLen}`]: []}})
+    };
 
     return (
         <div className='chatList'>
@@ -78,9 +78,10 @@ const Routers = () => {
                     <Route path="/" exact element={<Home/>}/>
                     <Route path="/chats/:chatId" element={<Chats
                         chats={chats}
-                        // handleAddChat={handleAddChat}
-                        // handleDelChat={handleDelChat}
-                        // isChat
+                        messages={messages}
+                        handleAddChat={handleAddChat}
+                        handleDelChat={handleDelChat}
+                        isChat
                     />
                     }/>
                     <Route path="/Profile" element={<Profile/>}/>
