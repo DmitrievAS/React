@@ -9,25 +9,44 @@
   flex-direction: row;
 }
 
-.dashboard {
+.messenger {
   display: flex;
-  flex-direction: column;
+
+  }
+
+.dashboard {
+  margin-left: 130px;
   width: 500px;
-  min-height: 500px;
-  margin: auto;
-  background-color: #D636C9;
+  height: 500px;
+  background-color: #cad2b0;
   border-radius: 10px;
   padding: 25px;
+}
 
+.messages {
+  width: 500px;
+}
+
+.changeUserProfile {
+  font-size: 20px;
+  color: aliceblue;
+  border: 1px solid aliceblue;
+  margin-top: 5px;
+  width: 300px;
+  height: 150px;
+  background-color: #CAD2B0FF;
+  padding: 5px;
+  border-radius: 7px;
 }
 
 .styleMessages {
   font-size: 20px;
-  color: black;
-  border: 1px solid black;
+  color: aliceblue;
+  border: 1px solid aliceblue;
   margin-top: 5px;
   width: auto;
-  background-color: #9DB82E;
+  height: 50px;
+  background-color: #72b1e3;
   padding: 5px;
   border-radius: 7px;
 
@@ -94,9 +113,8 @@
 
 .chatsList {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 150px;
-  height: 300px;
   margin: auto;
   background-color: #04f4fd;
   border-radius: 10px;
@@ -126,12 +144,16 @@
   color: aliceblue;
   width: 100px;
   display: block;
-  font-weight: bold;
+  margin-left: 10px;
+
+
 
   a {display: flex;
+    height: 36px;
     padding: 5px;
     margin-left: 20px;
     border-bottom: 1px solid aliceblue;
+    text-decoration: none;
     &:last-child{
       border-bottom: none;
     }
@@ -145,5 +167,17 @@
 }
 
 .userProfile {
+  display: flex;
+  flex-direction: column;
   color: black;
+  width: 300px;
+}
+
+.chatNameBox {
+  padding: 20px;
+  display: block;
+  button {
+    display: block;
+  }
+
 }

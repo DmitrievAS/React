@@ -1,9 +1,9 @@
 import ChatList from "../components/ChatList";
 
-const NoChats = ({ chats }) => {
+const NoChats = () => {
     return (
-        <div className={'chatsList'}>
-            <ChatList chats={chats}/>
+        <div>
+            <ChatList/>
         </div>
 
     );

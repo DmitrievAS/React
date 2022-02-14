@@ -1,27 +1,19 @@
-import {useParams} from "react-router-dom";
 import MessageList from '../components/MessageList';
 import ChatList from '../components/ChatList';
-import NoChats from "./NoChats";
-import {useState} from "react";
+import ControlPanel from "../components/ControlPanel";
 
-const Chats = ({chats, messages, handleAddChat, handleDelChat}) => {
-    let {chatId} = useParams();
-    console.log({messages})
+const Chat = () => {
 
-    return chats ? (
-        <div className={'chatsList'}>
-            <ChatList
-                chats={chats}
-                chatId={chatId}
-                handleAddChat={handleAddChat}
-                handleDelChat={handleDelChat}
-                isChat
-            />
-            <MessageList messages={messages}/>
+    return (
+        <div className='chatsList'>
+            <ChatList />
+            <div style={{height: "300" }}>
+            <MessageList />
+            <ControlPanel />
+            </div>
         </div>
-    ) : <NoChats/>;
+    )
 }
-export default Chats;
+export default Chat;
 
-//TODO: урок №6 примерно 1 час 5 минут
 

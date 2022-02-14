@@ -18,31 +18,7 @@ function App() {
     const [value, setValue] = useState("");
     const inputRef = useRef(null);
 
-    const handleChange = useCallback((event) => {
-        const valueFromInput = event.target.value;
-        setValue(valueFromInput);
-    }, [])
 
-
-    const handleSend = () => {
-        setMessagesList([...messageList, {text: value, author: 'me'}]);
-        setValue('');
-    }
-    useEffect(() => {
-        let timer;
-        if (messageList.length > 0 && messageList[messageList.length - 1].author === 'me') {
-            timer = setInterval(() => {
-                setMessagesList([...messageList, {
-                    text: 'сообщение бота',
-                    author: 'bot'
-                }]);
-            }, 1500);
-        }
-
-        return () => {
-            clearTimeout(timer);
-        }
-    }, [messageList])
 
     useEffect(() => {
         inputRef.current?.focus()

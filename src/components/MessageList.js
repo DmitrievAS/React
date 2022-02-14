@@ -3,56 +3,35 @@ import PropTypes from "prop-types";
 import '../App.css';
 import {Avatar, ListItemAvatar, ListItem, List, Box, ListItemText} from "@mui/material";
 import {useParams} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {useCallback} from "react";
 
-
-// const MessageList2 = (messages) => {
-//     // (Object.keys(messages).map((el) => console.log(el)));
-//     let {chatId} = useParams();
-//     console.log(messages);
-//
-//     return (
-//         <Box sx={{width: 600, height: 600, border: '1px solid #ссс', overflow: "auto", display: "flex"}}>
-//             <List sx={{mb: 2}}>
-//                 {messages["id1"]?.map((message, i) =>
-//                 <ListItem
-//                             // button
-//                             // key={i}
-//
-//                                     >
-//                     <ListItemAvatar>
-//                         <Avatar
-//                             sx={{bgcolor: messages.id1 === 'bot' ? 'green' : "blue"}}
-//                             >
-//                             {messages.id1.author === "bot" ? <Adb/> : <Face/>}
-//                         </Avatar>
-//                     </ListItemAvatar>
-//                     <ListItemText primary={messages.id1.text} secondary={messages.id1.author}/>
-//                 </ListItem>)
-//                 }}};
-//             </List>
-//         </Box>
-//     )
-// }
-
-const MessageList = (messages) => {
+const MessageList = () => {
     let {chatId} = useParams();
-    console.log(chatId)
+    const profileName = useSelector(state => state.profile.name);
+    const messages = useSelector(state => state.messages.messageList);
+    const getMessagesById = messages[chatId];
+
+    const renderMessage = useCallback((message, index) => {
+        return (
+            <ListItem
+                button
+                key={index}
+            >
+                <ListItemAvatar>
+                    <Avatar sx={{backgroundColor: message.author === 'bot' ? 'green' : "blue"}}>
+                        {message.author !== profileName ? <Adb/> : <Face/>}
+                    </Avatar>
+                </ListItemAvatar>
+                <ListItemText className='styleMessages' primary={message.text} secondary={message.author}/>
+            </ListItem>
+        )
+    }, [profileName])
+
     return (
-        <Box className={"styleMessages"} sx={{width: 600, height: 600, border: '1px solid #ссс', overflow: "auto"}}>
-            <List sx={{mb: 2}}>
-                {messages[chatId]?.map((message, i) => (
-                    <ListItem
-                        button
-                        key={i}
-                    >
-                        <ListItemAvatar>
-                            <Avatar sx={{bgcolor: message.author === 'Bot' ? 'green' : "blue"}}>
-                                {message.author === "bot" ? <Adb/> : <Face/>}
-                            </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText primary={message.text} secondary={message.author}/>
-                    </ListItem>
-                ))};
+        <Box className={"dashboard"} sx={{ border: '1px solid #ссс'}}>
+            <List sx={{mb: 2, width: 500, }}>
+                {getMessagesById?.map((message, index) => renderMessage( message, index ))}
             </List>
         </Box>
     );
