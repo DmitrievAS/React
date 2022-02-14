@@ -21,6 +21,7 @@ const messagesReducer = (state = initialState, action) => {
         case ADD_MESSAGE:
             console.log(action);
             console.log(action.chatId);
+            console.log(`${action.chatId}`);
             const currentList = state.messageList[action.chatId] || [];
 
             return {

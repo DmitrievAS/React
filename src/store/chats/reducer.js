@@ -1,5 +1,4 @@
 import {ADD_CHAT} from "./actions";
-import {CHANGE_NAME} from "../profile/chatActions";
 
 const initialState = {
     chatList: []
@@ -18,7 +17,7 @@ const chatsReducer = (state = initialState, action) => {
                 chatList: [
                     ...state.chatList,
                     {
-                        id: 'id${state.chatsList.length}',
+                        id: `id${state.chatList.length}`,
                         name: action.name
                     }
                 ]

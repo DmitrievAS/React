@@ -4,8 +4,7 @@ import {Send} from '@material-ui/icons';
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import {addMessage} from "../store/messages/actions";
-import profile from "../pages/Profile";
-import chats from "../pages/Chats";
+
 
 
 const ControlPanel = () => {

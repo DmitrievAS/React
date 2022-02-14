@@ -37,42 +37,6 @@ const MessageList = () => {
     );
 };
 
-
-// const [messageList, setMessagesList] = useState([]);
-
-
-// useEffect(() => {
-//         let timer;
-//         if (messageList.length > 0 && messageList[messageList.length - 1].author === 'me') {
-//             timer = setInterval(() => {
-//                 setMessagesList([...messageList, {
-//                     text: 'сообщение бота',
-//                     author: 'bot'
-//                 }]);
-//             }, 1500);
-//         }
-//
-//         return () => {
-//             clearTimeout(timer);
-//         }
-//     },
-//     [messageList])
-
-// const MessageList = ({chats, chatsId = []}) => {
-//     return (<div className='dashboard'>
-//         {/*{messageList.map((message, index) => (*/}
-//         {/*    <div*/}
-//         {/*        key={index}*/}
-//         {/*        className={`styleMessages ${message.author === 'me' ? 'me' : 'bot'}`}*/}
-//         {/*    >*/}
-//         {/*        {message.text} <sup style={styleAuthor}>{message.author} </sup>*/}
-//         {/*    </div>*/}
-//         {/*))}*/}
-//         Привет!
-//
-//     </div>)
-// }
-
 MessageList.propTypes = {
     messageList: PropTypes.arrayOf(PropTypes.shape({
         text: PropTypes.string,
