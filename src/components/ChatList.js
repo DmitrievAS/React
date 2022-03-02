@@ -2,7 +2,9 @@ import {Link, useParams} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
 import {Button, Dialog, DialogTitle, TextField} from "@mui/material";
 import {useState} from "react";
-import {addChat} from "../store/chats/actions";
+import {addChat, deleteChat} from "../store/chats/actions";
+import {Delete} from "@material-ui/icons";
+
 
 const ChatList = () => {
     const chats = useSelector(state => state.chats.chatList);
@@ -19,12 +21,16 @@ const ChatList = () => {
         setVisible(false)
     }
 
-    const handleChange = (e) => setNewChatName( e.target.value );
+    const handleChange = (e) => setNewChatName(e.target.value);
 
     const onAddChat = () => {
         dispatch(addChat(newChatName));
         setNewChatName("");
         handleClose();
+    }
+
+    const handleDelete = (index) =>{
+        dispatch(deleteChat(index));
     }
 
     return (
@@ -35,6 +41,9 @@ const ChatList = () => {
                         <b style={{color: chat.id === chatId ? `black` : `grey`}}>
                             {chat.name}
                         </b>
+                        <Button onClick={()=> handleDelete(index)}>
+                            <Delete style={{color: "white"}}/>
+                        </Button>
                     </Link>
                 </div>
             ))}
@@ -43,7 +52,7 @@ const ChatList = () => {
                 <Dialog onClose={handleClose} open={visible}>
                     <DialogTitle> Please, insert chat`s name </DialogTitle>
                     <div className='chatNameBox'>
-                    <TextField value={newChatName} onChange={handleChange} />
+                        <TextField value={newChatName} onChange={handleChange}/>
                         <Button onClick={onAddChat} disabled={!newChatName}>Add chat</Button>
                     </div>
                 </Dialog>
