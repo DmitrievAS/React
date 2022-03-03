@@ -1,39 +1,59 @@
 .App {
   text-align: center;
-  width: 600px;
+  width: 900px;
   min-height: 550px;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
   padding: 40px;
-  flex-direction: column;
+  flex-direction: row;
 }
 
-.dashboard {
+.messenger {
   display: flex;
-  flex-direction: column-reverse;
+
+  }
+
+.dashboard {
+  margin-left: 130px;
   width: 500px;
-  min-height: 500px;
-  margin: auto;
-  background-color: #D636C9;
+  height: 500px;
+  background-color: #cad2b0;
   border-radius: 10px;
   padding: 25px;
+}
 
+.messages {
+  width: 500px;
+}
+
+.changeUserProfile {
+  font-size: 20px;
+  color: aliceblue;
+  border: 1px solid aliceblue;
+  margin-top: 5px;
+  width: 300px;
+  height: 150px;
+  background-color: #CAD2B0FF;
+  padding: 5px;
+  border-radius: 7px;
 }
 
 .styleMessages {
   font-size: 20px;
-  color: black;
-  border: 1px solid black;
+  color: aliceblue;
+  border: 1px solid aliceblue;
   margin-top: 5px;
   width: auto;
-  background-color: #9DB82E;
+  height: 50px;
+  background-color: #72b1e3;
   padding: 5px;
   border-radius: 7px;
 
   &.me {
     text-align: right;
-  };
+  }
+;
 
   &.bot {
     text-align: left;
@@ -41,6 +61,9 @@
 }
 
 .controlPanel {
+  margin: 10px 20px;
+  display: flex;
+  width: 300px;
 
 }
 
@@ -86,4 +109,75 @@
 
 .header-blue {
   background-color: blue;
+}
+
+.chatsList {
+  display: flex;
+  flex-direction: row;
+  width: 150px;
+  margin: auto;
+  background-color: #04f4fd;
+  border-radius: 10px;
+  padding: 25px;
+
+}
+
+.box {
+  width: 150px;
+  background-color: #D636C9;
+  display: block;
+  right: auto;
+
+}
+
+.chatName {
+  background-color: #D636C9;
+  color: aliceblue;
+}
+
+.ListFolders {
+  color: aliceblue;
+  font-weight: bold;
+}
+
+.chatList{
+  color: aliceblue;
+  width: 100px;
+  display: block;
+  margin-left: 10px;
+
+
+
+  a {display: flex;
+    height: 36px;
+    padding: 5px;
+    margin-left: 20px;
+    border-bottom: 1px solid aliceblue;
+    text-decoration: none;
+    &:last-child{
+      border-bottom: none;
+    }
+  }
+}
+
+.chats {
+  display: flex;
+  align-items: flex-start;
+
+}
+
+.userProfile {
+  display: flex;
+  flex-direction: column;
+  color: black;
+  width: 300px;
+}
+
+.chatNameBox {
+  padding: 20px;
+  display: block;
+  button {
+    display: block;
+  }
+
 }
