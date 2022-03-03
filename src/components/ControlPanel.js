@@ -3,7 +3,7 @@ import React, {useCallback, useState} from "react";
 import {Send} from '@material-ui/icons';
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
-import {addMessage} from "../store/messages/actions";
+import {addMessageWithThunk} from "../store/messages/actions";
 
 
 const ControlPanel = () => {
@@ -15,13 +15,13 @@ const ControlPanel = () => {
 
     // const messages = useSelector(state => state.messages.messageList);
 
-    const handleButton = () => {
-        dispatch(addMessage(chatId, {
+    const handleButton = useCallback(()=> {
+        dispatch(addMessageWithThunk(chatId, {
             text: value,
             author: profileName
         }))
         setValue("")
-    }
+    }, [chatId, value, dispatch]);
 
     const handleChange = useCallback((event) => {
         const valueFromInput = event.target.value;
