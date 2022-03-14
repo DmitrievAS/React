@@ -4,35 +4,42 @@ import Home from "./Home";
 import Chats from "./Chats";
 import Profile from "./Profile";
 import NoChats from "./NoChats";
+import Gists from "./Gists";
 
 const Routers = () => {
-   return (
-        <div className='chatList'>
-            <Box sx={{display: 'flex', width: 300, color: 'D636C9'}}>
-                <Paper className='ListFolders' elevation={0} sx={{display: 'flex', color: 'ccc'}}>
-                    <ListItem component='div' disablePadding>
+    return (
+        <div className={'chatList'}>
+            <Box className="header">
+                <Paper className='ListFolders' elevation={0} sx={{display: 'flex', color: 'ccc' }}>
+                    <ListItem disablePadding>
                         <ListItemButton sx={{height: 56, color: 'D636C9'}}>
                             <Link to='/'>Home</Link>
                         </ListItemButton>
                     </ListItem>
-                    <ListItem component='div' disablePadding>
+                    <ListItem disablePadding>
                         <ListItemButton sx={{height: 56}}>
                             <Link to='/chats'>Chats</Link>
                         </ListItemButton>
                     </ListItem>
-                    <ListItem component='div' disablePadding>
+                    <ListItem disablePadding>
                         <ListItemButton sx={{height: 56}}>
                             <Link to='/profile'>Profile</Link>
                         </ListItemButton>
                     </ListItem>
+                    <ListItem disablePadding>
+                        <ListItemButton sx={{height: 56}}>
+                            <Link to='/gists'>Gists</Link>
+                        </ListItemButton>
+                    </ListItem>
                 </Paper>
             </Box>
-            <div className={'messenger'}>
+            <div>
                 <Routes>
-                    <Route path="/" exact element={<Home />}/>
-                    <Route path="/chats/:chatId" element={ <Chats /> }/>
-                    <Route path="/Profile" element={<Profile />}/>
-                    <Route path="*" element={<NoChats />}/>
+                    <Route path="/" exact element={<Home/>}/>
+                    <Route path="/chats/:chatId" element={<Chats/>}/>
+                    <Route path="/Profile" element={<Profile/>}/>
+                    <Route path="*" element={<NoChats/>}/>
+                    <Route path="/gists" element={<Gists/>}/>
                 </Routes>
             </div>
 

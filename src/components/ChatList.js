@@ -29,19 +29,21 @@ const ChatList = () => {
         handleClose();
     }
 
-    const handleDelete = (index) =>{
+    const handleDelete = (index) => {
         dispatch(deleteChat(index));
     }
 
     return (
-        <div className='chatList'>
+        //todo сделать class для основного div
+
+        <div>
             {chats.map((chat, index) => (
                 <div key={index}>
                     <Link to={`/chats/${chat.id}`}>
                         <b style={{color: chat.id === chatId ? `black` : `grey`}}>
                             {chat.name}
                         </b>
-                        <Button onClick={()=> handleDelete(index)}>
+                        <Button onClick={() => handleDelete(index)}>
                             <Delete style={{color: "white"}}/>
                         </Button>
                     </Link>

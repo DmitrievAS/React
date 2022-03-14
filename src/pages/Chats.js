@@ -5,11 +5,13 @@ import ControlPanel from "../components/ControlPanel";
 const Chat = () => {
 
     return (
-        <div className='chatsList'>
-            <ChatList />
-            <div style={{height: "300" }}>
-            <MessageList />
-            <ControlPanel />
+        <div className ="messenger" style = {{display:"flex"}}>
+            <div className = "chatsList">
+                <ChatList/>
+            </div>
+            <div className='controlPanel'>
+                <MessageList/>
+                <ControlPanel/>
             </div>
         </div>
     )

@@ -3,7 +3,7 @@ import React, {useCallback, useState} from "react";
 import {Send} from '@material-ui/icons';
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
-import {addMessageWithThunk} from "../store/messages/actions";
+import {addMessageSaga } from "../store/messages/actions";
 
 
 const ControlPanel = () => {
@@ -15,12 +15,16 @@ const ControlPanel = () => {
 
     // const messages = useSelector(state => state.messages.messageList);
 
-    const handleButton = useCallback(()=> {
-        dispatch(addMessageWithThunk(chatId, {
+    const handleButton = useCallback(() => {
+        dispatch(addMessageSaga(chatId, {
             text: value,
             author: profileName
-        }))
-        setValue("")
+        }));
+        // dispatch(addMessageWithThunk(chatId, {
+        //     text: value,
+        //     author: profileName
+        // }))
+        setValue("");
     }, [chatId, value, dispatch]);
 
     const handleChange = useCallback((event) => {
@@ -48,18 +52,15 @@ const ControlPanel = () => {
 
     return (
         <>
-            <Box sx={{
-                margin: '20px 0px 0px 110px'
-            }}
-                 component='form'
+            <Box component='form'
                  noValidate
                  autoComplete='off'
                  flexDirection='row'
                  justifyContent='space-between'
             >
-                <div className='controlPanel' style={{margin: "10px 20px"}}>
+                <div className='InputButton'>
                     <TextField
-                        style={{margin: '0 20px'}}
+                        style={{margin: '0 20px', width: "400px"}}
                         id="outlined-basic"
                         label="Insert message"
                         variant="filled"

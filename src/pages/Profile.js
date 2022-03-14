@@ -3,7 +3,7 @@ import {useCallback, useState} from "react";
 import {CHANGE_NAME} from "../store/profile/chatActions";
 
 const Profile = () => {
-    const {name, showName} = useSelector(state => state.profile.name);
+    const {name} = useSelector(state => state.profile.name);
     const [value, setValue] = useState(name);
     const dispatch = useDispatch();
 
@@ -32,6 +32,7 @@ const Profile = () => {
         </div>
     )
 }
+export default Profile;
 
 // import {useDispatch, useSelector} from "react-redux";
 // import {useCallback, useState} from "react";
@@ -72,4 +73,3 @@ const Profile = () => {
 //     );
 // }
 
-export default Profile;

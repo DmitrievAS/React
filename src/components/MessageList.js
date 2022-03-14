@@ -17,21 +17,24 @@ const MessageList = () => {
             <ListItem
                 button
                 key={index}
+                sx={{width: "500px", backgroundColor: 'fff'}}
             >
                 <ListItemAvatar>
                     <Avatar sx={{backgroundColor: message.author === 'bot' ? 'green' : "blue"}}>
                         {message.author !== profileName ? <Adb/> : <Face/>}
                     </Avatar>
                 </ListItemAvatar>
-                <ListItemText className='styleMessages' primary={message.text} secondary={message.author}/>
+                <ListItemText className='styleMessages'
+                              sx={{textAlign: message.author === 'bot' ? 'left' : "right"}}
+                              primary={message.text} secondary={message.author}/>
             </ListItem>
         )
     }, [profileName])
 
     return (
-        <Box className={"dashboard"} sx={{ border: '1px solid #ссс'}}>
-            <List sx={{mb: 2, width: 500, }}>
-                {getMessagesById?.map((message, index) => renderMessage( message, index ))}
+        <Box className="dashboard">
+            <List sx={{ mb: 1, minHeight: "500px" }}>
+                {getMessagesById?.map((message, index) => renderMessage(message, index))}
             </List>
         </Box>
     );
@@ -47,4 +50,3 @@ MessageList.propTypes = {
 export default MessageList
 
 
-//TODO есть в уроке 7.

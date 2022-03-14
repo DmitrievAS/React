@@ -11,6 +11,7 @@
 //
 
 import {ADD_MESSAGE} from "./actions";
+import {DELETE_CHAT} from "../chats/actions";
 
 const initialState = {
     messageList: {}
@@ -19,9 +20,6 @@ const initialState = {
 const messagesReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MESSAGE:
-            console.log(action);
-            console.log(action.chatId);
-            console.log(`${action.chatId}`);
             const currentList = state.messageList[action.chatId] || [];
 
             return {
@@ -32,12 +30,22 @@ const messagesReducer = (state = initialState, action) => {
                         ...currentList,
                         {
                             ...action.message,
-                          id: `${action.chatId}${currentList.length}`,
+                            id: `${action.chatId}${currentList.length}`,
 
                         }
                     ]
                 }
             }
+        case DELETE_CHAT:
+            //todo: Удаление сообщений чата при удалении самого чата, по chatID
+            // const filteredKeys = Object.keys(state.messageList).filter(chatId => chatId !== action.chatId);
+            // const newState ={};
+            // filteredKeys.map(element => {
+            //     if (newState[element] =)
+            //     newState[element] = state[element]
+            // })
+            return {...state};
+
         default:
             return state
     }
