@@ -1,39 +1,32 @@
-.App {
-  text-align: center;
-  width: 600px;
-  min-height: 550px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px;
-  flex-direction: column;
+.messages {
+  width: 500px;
 }
 
-.dashboard {
-  display: flex;
-  flex-direction: column-reverse;
-  width: 500px;
-  min-height: 500px;
-  margin: auto;
-  background-color: #D636C9;
-  border-radius: 10px;
-  padding: 25px;
-
+.changeUserProfile {
+  font-size: 20px;
+  color: aliceblue;
+  border: 1px solid aliceblue;
+  margin-top: 5px;
+  width: 300px;
+  height: 150px;
+  background-color: #CAD2B0FF;
+  padding: 5px;
+  border-radius: 7px;
 }
 
 .styleMessages {
-  font-size: 20px;
-  color: black;
-  border: 1px solid black;
-  margin-top: 5px;
-  width: auto;
-  background-color: #9DB82E;
+  color: aliceblue;
+  border: 1px solid aliceblue;
+  height: 50px;
+  width: 300px;
+  background-color: #72b1e3;
   padding: 5px;
   border-radius: 7px;
 
   &.me {
     text-align: right;
-  };
+  }
+;
 
   &.bot {
     text-align: left;
@@ -41,7 +34,16 @@
 }
 
 .controlPanel {
+  display: flex;
+  width: 500px;
+  flex-direction: column;
+  margin-left: 25px;
 
+}
+
+.InputButton {
+  display: flex;
+  width: 500px;
 }
 
 .App-logo {
@@ -53,18 +55,6 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
-
-.App-header {
-  top: 100px;
-  background-color: #560c86;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {
@@ -80,10 +70,85 @@
   }
 }
 
-.header-red {
-  background-color: red;
+.chatsList {
+  width: 150px;
+  height: 600px;
+  //margin: 20px;
+  background-color: #72b1e3;
+  border-radius: 10px;
+  padding: 25px;
 }
 
-.header-blue {
-  background-color: blue;
+
+.chatName {
+  background-color: #D636C9;
+  color: aliceblue;
+}
+
+.ListFolders {
+  font-weight: bold;
+  color: black;
+}
+
+.chatList {
+  width: 800px;
+  margin-left: 10px;
+  padding: 5px;
+
+  a {
+    display: flex;
+    height: 36px;
+    padding: 5px;
+    margin-left: 10px;
+    text-decoration: none;
+    color: black;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.chats {
+  display: flex;
+  align-items: flex-start;
+
+}
+
+.userProfile {
+  display: flex;
+  flex-direction: column;
+  color: black;
+  width: 300px;
+}
+
+.chatNameBox {
+  padding: 20px;
+  display: block;
+
+  button {
+    display: block;
+  }
+
+  .messenger {
+    height: 600px;
+
+  }
+
+
+  .header {
+    width: 300px;
+    display: flex;
+  }
+
+  .dashboard {
+    margin-left: 180px;
+    width: 500px;
+    height: 500px;
+    background-color: #cad2b0;
+    border-radius: 10px;
+    padding: 25px;
+
+  }
+
 }
