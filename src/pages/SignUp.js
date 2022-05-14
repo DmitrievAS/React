@@ -1,16 +1,13 @@
 import {Box, Button, Paper, TextField, Typography} from "@mui/material";
 import {useState} from "react";
-import useAuth from "../hook/useAuth";
-import {useLocation, useNavigate} from "react-router-dom";
+import {createUserWithEmailAndPassword, getAuth} from "firebase/auth"
+import firebase from "../service/firebase";
+import {Error} from "@material-ui/icons";
 
-const Login = () => {
+const SignUP = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const auth = useAuth();
-    const navigate = useNavigate();
-    const location = useLocation();
-
-    let from = location.state?.from?.pathname || '/';
+    const [error, setError] = useState(false);
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value)
@@ -20,14 +17,17 @@ const Login = () => {
         setPassword(e.target.value)
     }
 
-
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        await auth.signIn({email, password}, () => {
-            navigate(from, {replace: true})
-        })
+        try {
+            const auth = getAuth(firebase);
+            await createUserWithEmailAndPassword(auth, email, password)
+        } catch (e) {
+            console.log(e);
+            setError(error.message);
+        }
+
     }
 
     return (
@@ -41,8 +41,8 @@ const Login = () => {
             }
         }}>
             <form onSubmit={handleSubmit}>
-                <Typography variant="h4" >Login</Typography>
-                <p>Fill in the form below to login to your account</p>
+                <Typography variant="h4">SignUp</Typography>
+                <p>Insert email and password</p>
                 <Paper>
                     <TextField
                         type="email"
@@ -63,10 +63,10 @@ const Login = () => {
                     />
                     <br/>
                     <br/>
-                    <Button
-                        type={"submit"}
-                        variant="contained"
-                    > Login</Button>
+                    <div>
+                        {error && <Error>{error}</Error>}
+                        <Button type={"submit"} variant="contained">Login</Button>
+                    </div>
                 </Paper>
             </form>
         </Box>
@@ -75,4 +75,4 @@ const Login = () => {
 
 };
 
-export default Login;
+export default SignUP;

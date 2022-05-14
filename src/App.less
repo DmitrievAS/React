@@ -16,12 +16,11 @@
 
 .styleMessages {
   color: aliceblue;
-  border: 1px solid aliceblue;
   height: 50px;
-  width: 300px;
+  min-width: 300px;
   background-color: #72b1e3;
   padding: 5px;
-  border-radius: 7px;
+  border-radius: 12px;
 
   &.me {
     text-align: right;
@@ -35,7 +34,7 @@
 
 .controlPanel {
   display: flex;
-  width: 500px;
+  min-width: 500px;
   flex-direction: column;
   margin-left: 25px;
 
@@ -43,7 +42,7 @@
 
 .InputButton {
   display: flex;
-  width: 500px;
+  width: 400px;
 }
 
 .App-logo {
@@ -143,12 +142,26 @@
 
   .dashboard {
     margin-left: 180px;
-    width: 500px;
+    width: 530px;
     height: 500px;
     background-color: #cad2b0;
     border-radius: 10px;
     padding: 25px;
 
   }
+
+  .mainMenuButton {
+    justify-content: inherit;
+  }
+
+  .mainMenuItem {
+    justify-content: center;
+  }
+
+  .boxFormSend {
+    display: flex;
+    justify-content: flex-end;
+  }
+
 
 }

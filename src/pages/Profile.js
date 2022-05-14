@@ -3,7 +3,7 @@ import {useCallback, useState} from "react";
 import {CHANGE_NAME} from "../store/profile/chatActions";
 
 const Profile = () => {
-    const {name} = useSelector(state => state.profile.name);
+    const {name} = useSelector(state => state.profile);
     const [value, setValue] = useState(name);
     const dispatch = useDispatch();
 
