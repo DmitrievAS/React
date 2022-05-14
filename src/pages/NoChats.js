@@ -2,7 +2,7 @@ import ChatList from "../components/ChatList";
 
 const NoChats = () => {
     return (
-        <div>
+        <div className='messenger'>
             <ChatList/>
         </div>
 

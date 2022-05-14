@@ -1,38 +1,78 @@
-import {Box, Paper, ListItemButton, ListItem} from "@mui/material";
-import {Link, Routes, Route} from "react-router-dom";
+import {Box, Paper, ListItemButton, ListItem, Button} from "@mui/material";
+import {Link, Routes, Route, useNavigate, useLocation} from "react-router-dom";
 import Home from "./Home";
 import Chats from "./Chats";
 import Profile from "./Profile";
 import NoChats from "./NoChats";
+import Gists from "./Gists";
+import SignUp from "./SignUp";
+import RequiredAuth from "../hocs/RequiredAuth";
+import Login from "./Login";
+import useAuth from "../hook/useAuth";
 
 const Routers = () => {
-   return (
-        <div className='chatList'>
-            <Box sx={{display: 'flex', width: 300, color: 'D636C9'}}>
-                <Paper className='ListFolders' elevation={0} sx={{display: 'flex', color: 'ccc'}}>
-                    <ListItem component='div' disablePadding>
-                        <ListItemButton sx={{height: 56, color: 'D636C9'}}>
+    let auth = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    let from = location.state?.from?.pathname || '/';
+
+    return (
+        <div className={'chatList'}>
+            <Box className="header">
+                <Paper className='ListFolders' elevation={0} sx={{display: 'flex'}}>
+                    <ListItem disablePadding className={"mainMenuItem"}>
+                        <ListItemButton className={"mainMenuButton"} sx={{height: 56, justifyContent: "center"}}>
                             <Link to='/'>Home</Link>
                         </ListItemButton>
                     </ListItem>
-                    <ListItem component='div' disablePadding>
-                        <ListItemButton sx={{height: 56}}>
+                    <ListItem disablePadding className={"mainMenuItem"}>
+                        <ListItemButton sx={{height: 56, justifyContent: "center"}}>
                             <Link to='/chats'>Chats</Link>
                         </ListItemButton>
                     </ListItem>
-                    <ListItem component='div' disablePadding>
-                        <ListItemButton sx={{height: 56}}>
+                    <ListItem disablePadding className={"mainMenuItem"}>
+                        <ListItemButton sx={{height: 56, justifyContent: "center"}}>
                             <Link to='/profile'>Profile</Link>
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem disablePadding className={"mainMenuItem"}>
+                        <ListItemButton sx={{height: 56, justifyContent: "center"}}>
+                            <Link to='/gists'>Gists</Link>
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem disablePadding className={"mainMenuItem"}>
+                        <ListItemButton sx={{height: 56, justifyContent: "center"}}>
+                            <Link to='/signup'>Sign Up</Link>
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem disablePadding className={"mainMenuItem"}>
+                        <ListItemButton sx={{height: 56, justifyContent: "center"}}>
+                            <Link to='/login'>Login</Link>
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem disablePadding className={"mainMenuItem"}>
+                        <ListItemButton sx={{height: 56, justifyContent: "center"}}>
+                            <Button onClick={() => auth.signout(() => {
+                                navigate(from, {replace: true})
+                            })}>Sign Out</Button>
                         </ListItemButton>
                     </ListItem>
                 </Paper>
             </Box>
-            <div className={'messenger'}>
+            <div>
                 <Routes>
-                    <Route path="/" exact element={<Home />}/>
-                    <Route path="/chats/:chatId" element={ <Chats /> }/>
-                    <Route path="/Profile" element={<Profile />}/>
-                    <Route path="*" element={<NoChats />}/>
+                    <Route path="/" exact element={<Home message={"Hi"}/>}/>
+                    <Route path="/login" element={<Login/>}/>
+                    <Route path="/signup" element={<SignUp/>}/>
+
+                    <Route element={<RequiredAuth/>}>
+                        <Route path="/chats/" exact element={<NoChats/>}/>
+                        <Route path="/chats/:chatId" element={<Chats/>}/>
+                        <Route path="/profile" element={<Profile/>}/>
+                        <Route path="/gists" element={<Gists/>}/>
+                    </Route>
+                    <Route path="*" element={<NoChats/>}/>
                 </Routes>
             </div>
 

@@ -3,25 +3,29 @@ import React, {useCallback, useState} from "react";
 import {Send} from '@material-ui/icons';
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
-import {addMessageWithThunk} from "../store/messages/actions";
+import {addMessagesWithFB} from "../store/middleware";
+
 
 
 const ControlPanel = () => {
 
     const [value, setValue] = useState("");
-    const dispatch = useDispatch();
-    const profileName = useSelector(state => state.profile.name)
+    const { name } = useSelector(state => state.profile)
     const {chatId} = useParams();
+    const dispatch = useDispatch();
 
     // const messages = useSelector(state => state.messages.messageList);
 
-    const handleButton = useCallback(()=> {
-        dispatch(addMessageWithThunk(chatId, {
-            text: value,
-            author: profileName
-        }))
-        setValue("")
-    }, [chatId, value, dispatch]);
+    const handleButton = () => {
+        if (value !== "") {
+            const message = {
+                text: value,
+                author: name
+            }
+        dispatch(addMessagesWithFB(chatId, message))
+        setValue("");
+        }
+    };
 
     const handleChange = useCallback((event) => {
         const valueFromInput = event.target.value;
@@ -48,17 +52,16 @@ const ControlPanel = () => {
 
     return (
         <>
-            <Box sx={{
-                margin: '20px 0px 0px 110px'
-            }}
-                 component='form'
+            <Box className="boxFormSend" sx={{marginLeft: "25px"}}
+                component='form'
                  noValidate
                  autoComplete='off'
                  flexDirection='row'
                  justifyContent='space-between'
             >
-                <div className='controlPanel' style={{margin: "10px 20px"}}>
+                <div>
                     <TextField
+                        className='InputButton'
                         style={{margin: '0 20px'}}
                         id="outlined-basic"
                         label="Insert message"
